@@ -1,5 +1,6 @@
 import { auth } from "./firebase-app";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { errorMessage } from "../utils/error";
 
 const logIn = async (email: string, password: string) => {
   try {
@@ -10,7 +11,7 @@ const logIn = async (email: string, password: string) => {
     );
     console.log(userCredentials);
   } catch (error) {
-    console.log({ error });
+    errorMessage(error, "Obtuviste este error");
   }
 };
 
