@@ -6,10 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lit Todo List</title>
     <link rel="stylesheet" href="./src/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap"
+      rel="stylesheet"
+    />
     <script type="module" src="/src/main.ts"></script>
   </head>
   <body>
-    <header></header>
+    <header class="lit-container-header">
+      <nav class="lit-container-navbar">
+        <div class="lit-container-logo">
+          <img src="/src/assets/lit.svg" alt="Web component with Lit" width="40" />
+          <h1>Lit Todo List</h1>
+        </div>
+        <div>
+          <a href="#"> Login </a>
+        </div>
+      </nav>
+    </header>
     <main>
       <app-todo></app-todo>
     </main>
