@@ -35,6 +35,9 @@
   font-weight: normal;
   font-family: var(--lit-font-letter);
 }
+a {
+  text-decoration: none;
+}
 
 .lit-container-header {
   background-color: var(--lit-background-white);
