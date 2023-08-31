@@ -8,7 +8,6 @@ export default class TodoDashboard extends LitElement {
       min-height: 100vh;
       margin: 0 auto;
       padding: 3rem 8rem;
-      background-color: #202020;
     }
     @media screen and (max-width: 764px) {
       .lit-todo-dasboard {
