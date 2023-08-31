@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { customElement } from "lit/decorators.js";
-import "./components/custom-element";
+import "./components/todo-login";
 
 @customElement("app-todo")
 export default class AppTodo extends LitElement {
@@ -11,8 +11,8 @@ export default class AppTodo extends LitElement {
   `;
   render() {
     return html`
-      <h1>App principal</h1>
-      <custom-element></custom-element>
+      <h1>Wlecome Lit Todo List</h1>
+      <todo-login></todo-login>  
     `;
   }
 }
