@@ -13,12 +13,39 @@ export default class className extends LitElement {
       text-decoration: underline;
       cursor: pointer;
     }
+    .log-in {
+      background-color: #202020;
+    }
+    .check-in {
+      background-color: #202020;
+    }
   `;
 
   @property()
   title = "";
 
+  @property()
+  auth = "";
+
+  @property()
+  classname = "";
   render() {
-    return html` <button id="access-button">${this.title}</button> `;
+    return html`
+      <button class=${this.classname} @click=${this.handleAccessAuthentication}>
+        ${this.title}
+      </button>
+    `;
+  }
+
+  handleAccessAuthentication() {
+    alert("event");
+    console.log(this.auth);
+    if (this.auth === "login") {
+      console.log("Iniciar sesion");
+      return;
+    } else if (this.auth === "register") {
+      console.log("Registrarse");
+      return;
+    }
   }
 }
