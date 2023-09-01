@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vaadin/router": "^1.7.5",
     "firebase": "^10.3.0",
     "lit": "^2.7.6"
   },
