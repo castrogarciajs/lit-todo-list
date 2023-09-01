@@ -25,13 +25,15 @@
           />
           <h1>Lit Todo List</h1>
         </div>
-        <div>
+        <div slot="drawer">
           <access-button
+            pathname="/login"
             classname="log-in"
             title="Log In"
             auth="login"
           ></access-button>
           <access-button
+            pathname="/register"
             classname="check-in"
             title="Check In"
             auth="register"
@@ -39,13 +41,7 @@
         </div>
       </nav>
     </header>
-
-    <main id="router-outlet">
-      <todo-dasboard>
-        <app-todo></app-todo>
-      </todo-dasboard>
-    </main>
-
+    <main id="router-outlet"></main>
     <footer></footer>
   </body>
 </html>

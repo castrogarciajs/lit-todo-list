@@ -4,12 +4,12 @@ import { customElement, property } from "lit/decorators.js";
 @customElement("access-button")
 export default class className extends LitElement {
   static styles = css`
-    button {
-      background: none;
-      border: none;
+    a {
+      color: white;
       font-weight: 700;
+
     }
-    button:hover {
+    a:hover {
       text-decoration: underline;
       cursor: pointer;
     }
@@ -29,16 +29,22 @@ export default class className extends LitElement {
 
   @property()
   classname = "";
+
+  @property()
+  pathname = "";
   render() {
     return html`
-      <button class=${this.classname} @click=${this.handleAccessAuthentication}>
+      <a
+        href=${this.pathname}
+        class=${this.classname}
+        @click=${this.handleAccessAuthentication}
+      >
         ${this.title}
-      </button>
+      </a>
     `;
   }
 
   handleAccessAuthentication() {
-    alert("event");
     console.log(this.auth);
     if (this.auth === "login") {
       console.log("Iniciar sesion");
