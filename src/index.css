@@ -15,23 +15,35 @@
 }
 
 .lit-container-navbar .lit-container-logo {
-    gap: 1rem;
+  gap: 1rem;
 }
 .lit-container-navbar .lit-container-logo a {
-    font-weight: bold;
-    font-weight: 600;
+  font-weight: bold;
+  font-weight: 600;
 }
 .footer-todo-lit {
   background-color: var(--lit-c-line);
-  padding: 0.7rem 0;
+  padding: 0.7rem var(--lit-size-padding);
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-todo-lit .footer-created {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.9rem;
+}
+.footer-todo-lit .footer-created p {
+  align-self: flex-end;
 }
 .footer-todo-lit a {
   text-decoration: underline;
-  color: var(--lit-c-water);
-  font-size: 0.9rem;
+  color: var(--lit-c-water-dark);
+  font-size: 0.8rem;
 }
 .footer-todo-lit span {
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
 }
