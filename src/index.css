@@ -2,7 +2,7 @@
 
 .lit-container-header {
   background-color: var(--lit-background-white);
-  padding: 0.2rem var(--lit-size-padding);
+  padding: 0.5rem var(--lit-size-padding);
   border-bottom: 1px solid var(--lit-c-line);
   box-shadow: 0px 2px 4px -1px var(--lit-c-shadow);
 }
@@ -17,7 +17,7 @@
 .lit-container-navbar .lit-container-logo {
     gap: 1rem;
 }
-.lit-container-navbar .lit-container-logo h1 {
+.lit-container-navbar .lit-container-logo a {
     font-weight: bold;
     font-weight: 600;
 }
