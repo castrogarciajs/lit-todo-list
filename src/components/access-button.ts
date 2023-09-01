@@ -7,17 +7,22 @@ export default class className extends LitElement {
     a {
       color: white;
       font-weight: 700;
-
+      text-decoration: none;
+      padding: 0 1.2rem;
     }
     a:hover {
       text-decoration: underline;
       cursor: pointer;
     }
-    .log-in {
-      background-color: #202020;
+    a {
+      color: var(--lit-c-indigo);
     }
-    .check-in {
-      background-color: #202020;
+    .log-in:hover, .check-in:hover {
+      
+      background-color: var(--lit-c-line);
+      color: var(--lit-c-zinc);
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
     }
   `;
 
