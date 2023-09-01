@@ -10,16 +10,17 @@ export default class HomeView extends LitElement {
       grid-template-columns: 50% 50%;
       min-height: 100vh;
       height: 100%;
-      overflow: hidden;
     }
     .home-view .home-title {
+      white-space: pre-wrap;
       padding-left: 1.5rem;
       display: flex;
       justify-content: center;
       align-items: center;
     }
     .home-view .home-title h1 {
-      font-size: 9rem;
+      text-align: center;
+      font-size: 9vw;
     }
     .home-view .home-image {
       display: flex;
@@ -27,6 +28,7 @@ export default class HomeView extends LitElement {
       align-items: center;
     }
     .home-view .home-image img {
+      min-height: max-content;
       object-fit: cover;
       animation: floatLitImage 2.5s infinite;
     }
@@ -40,6 +42,11 @@ export default class HomeView extends LitElement {
       }
       100% {
         transform: translateY(0);
+      }
+    }
+    @media screen and (max-width: 1023px) {
+      .home-view {
+        grid-template-columns: auto;
       }
     }
   `;
