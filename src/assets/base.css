@@ -1,0 +1,45 @@
+:root {
+  --lit-c-white: rgb(255, 255, 255);
+  --lit-c-paper: rgb(230, 230, 200);
+
+  --lit-c-color: rgb(0, 0, 0);
+  --lit-c-zinc: rgb(30, 30, 20);
+  --lit-c-shadow: rgba(0, 0, 0, 0.2);
+
+  --lit-c-indigo: rgb(117, 117, 117);
+  --lit-c-accent: rgb(153, 153, 153);
+  --lit-c-line: rgb(209, 209, 209);
+
+  --lit-c-water: rgb(88, 101, 242);
+  --lit-c-water-dark: rgb(70, 85, 240);
+  --lit-c-red: rgb(255, 0, 0);
+}
+
+:root {
+  --lit-background-white: var(--lit-c-white);
+  --lit-background-water: var(--lit-c-water);
+
+  --lit-background-red: var(--lit-c-red);
+  --lit-background-zinc: var(--lit-c-zinc);
+
+  --lit-size-padding: 1rem;
+  --lit-size-margin: 1rem;
+
+  --lit-font-letter: "Manrope", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+  font-family: var(--lit-font-letter);
+}
+a {
+  text-decoration: none;
+}
+
+figure {
+  margin: 0;
+}
