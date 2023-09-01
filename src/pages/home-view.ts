@@ -51,7 +51,7 @@ export default class HomeView extends LitElement {
     }
   `;
 
-  render() {
+  protected render() {
     return html`
       <section class="home-view">
         <article class="home-title">
