@@ -5,8 +5,13 @@ import { customElement } from "lit/decorators.js";
 export default class LoginView extends LitElement {
   render() {
     return html`
-      <h1>login view</h1>
-      <p>login view</p>
+      <section>
+        <form>
+          <input type="text" placeholder="Ingresa tu correo" />
+          <input type="password" placeholder="Ingresa tu contraseña" />
+          <input type="button" value="Iniciar Sesion" />
+        </form>
+      </section>
     `;
   }
 }

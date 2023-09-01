@@ -60,3 +60,17 @@ a {
     font-weight: bold;
     font-weight: 600;
 }
+.footer-todo-lit {
+  background-color: var(--lit-c-line);
+  padding: 0.7rem 0;
+  text-align: center;
+}
+.footer-todo-lit a {
+  text-decoration: underline;
+  color: var(--lit-c-water);
+  font-size: 0.9rem;
+}
+.footer-todo-lit span {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
