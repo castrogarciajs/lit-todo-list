@@ -28,6 +28,7 @@ export default class LoginView extends LitElement {
       }
     `,
   ];
+
   protected render() {
     return html`
       <section class="section-view-shared">

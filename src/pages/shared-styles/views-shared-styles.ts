@@ -3,6 +3,9 @@ import { css } from "lit";
 export const styleSharedViewsLoginRegister = css`
   figure {
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .section-view-shared {
     display: grid;
@@ -17,7 +20,7 @@ export const styleSharedViewsLoginRegister = css`
   .section-view-shared .view-form form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
   }
   .separator-view-separator {
     position: relative;
@@ -29,6 +32,7 @@ export const styleSharedViewsLoginRegister = css`
     background: var(--lit-c-line);
     border: none;
     box-shadow: 0 0.2rem 0.9rem 0 var(--lit-c-line);
+    width: 25vw;
   }
 
   .submit-form {
