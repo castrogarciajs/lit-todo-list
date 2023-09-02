@@ -1,37 +1,39 @@
 import { LitElement, css, html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import womenRegister from "../assets/wome-register.svg";
 import { styleSharedViewsLoginRegister } from "./shared-styles/views-shared-styles";
 import { checkIn } from "../firebase/auth";
+import { redirect } from "../utils/functions";
 
 @customElement("register-view")
 export default class RegiserView extends LitElement {
-  @property()
+  @query("#register")
+  formElement?: HTMLFormElement | null;
+
+  @property({ type: String })
   email = "";
 
-  @property()
+  @property({ type: String })
   password = "";
 
   private async _userRegistryHandle(e: Event) {
     e.preventDefault();
 
     await checkIn(this.email, this.password);
-
-    const formElement =
-      this.shadowRoot?.querySelector<HTMLFormElement>("#register");
-
-    if (formElement) formElement.reset();
+    if (this.formElement) this.formElement.reset();
 
     this.email = "";
     this.password = "";
+
+    redirect("/dasboard");
   }
 
-  private _valueInputEmailHandle(e: Event) {
+  private _handleEmailChange(e: Event) {
     const inputElement = e.target as HTMLInputElement;
 
     this.email = inputElement.value;
   }
-  private _valueInputPasswordHandle(e: Event) {
+  private _handlePasswordChange(e: Event) {
     const inputElement = e.target as HTMLInputElement;
 
     this.password = inputElement.value;
@@ -50,7 +52,7 @@ export default class RegiserView extends LitElement {
               class="cap-shared"
               name="useremail"
               value=${this.email}
-              @change=${this._valueInputEmailHandle}
+              @change=${this._handleEmailChange}
               required
             />
             <input
@@ -59,7 +61,7 @@ export default class RegiserView extends LitElement {
               class="cap-shared"
               name="password"
               value=${this.password}
-              @change=${this._valueInputPasswordHandle}
+              @change=${this._handlePasswordChange}
               required
             />
             <input type="submit" value="Registrarse" class="submit-form" />
