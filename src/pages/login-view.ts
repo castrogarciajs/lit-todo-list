@@ -1,10 +1,76 @@
 import { LitElement, css, html } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import womenLogIn from "../assets/women-log-in.svg";
 import { styleSharedViewsLoginRegister } from "./shared-styles/views-shared-styles";
+import { logIn } from "../firebase/auth";
+import { redirect } from "../utils/functions";
 
 @customElement("login-view")
 export default class LoginView extends LitElement {
+  @query("#login")
+  formElement!: HTMLFormElement;
+
+  @property()
+  email!: string;
+
+  @property()
+  password!: string;
+
+  private async handleUserLogin(e: Event) {
+    e.preventDefault();
+    console.log("submit");
+
+    await logIn(this.email, this.password);
+
+    if (this.formElement) this.formElement.reset();
+
+    this.email = "";
+    this.password = "";
+    redirect("/dashboard");
+  }
+
+  private handleEmailUser(e: Event) {
+    const { value } = e.target as HTMLInputElement;
+    this.email = value;
+  }
+
+  private handlePasswordUser(e: Event) {
+    const { value } = e.target as HTMLInputElement;
+    this.password = value;
+  }
+  protected render() {
+    return html`
+      <section class="section-view-shared">
+        <article
+          class="separator-view-separator login-view-separator"
+        ></article>
+        <article class="view-form">
+          <form @submit=${this.handleUserLogin} id="login">
+            <figure>
+              <img src=${womenLogIn} alt="Inicia Sesision" width="150" />
+            </figure>
+            <input
+              type="text"
+              placeholder="Ingresa tu correo"
+              class="cap-shared"
+              name="email"
+              required
+              @change=${this.handleEmailUser}
+            />
+            <input
+              type="password"
+              placeholder="Ingresa tu contraseña"
+              class="cap-shared"
+              name="password"
+              required
+              @change=${this.handlePasswordUser}
+            />
+            <input type="submit" value="Iniciar Sesion" class="submit-form" />
+          </form>
+        </article>
+      </section>
+    `;
+  }
   static styles = [
     styleSharedViewsLoginRegister,
     css`
@@ -28,32 +94,4 @@ export default class LoginView extends LitElement {
       }
     `,
   ];
-
-  protected render() {
-    return html`
-      <section class="section-view-shared">
-        <article
-          class="separator-view-separator login-view-separator"
-        ></article>
-        <article class="view-form">
-          <form>
-            <figure>
-              <img src=${womenLogIn} alt="Inicia Sesision" width="150" />
-            </figure>
-            <input
-              type="text"
-              placeholder="Ingresa tu correo"
-              class="cap-shared"
-            />
-            <input
-              type="password"
-              placeholder="Ingresa tu contraseña"
-              class="cap-shared"
-            />
-            <input type="button" value="Iniciar Sesion" class="submit-form" />
-          </form>
-        </article>
-      </section>
-    `;
-  }
 }

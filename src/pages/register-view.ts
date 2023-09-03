@@ -8,15 +8,15 @@ import { redirect } from "../utils/functions";
 @customElement("register-view")
 export default class RegiserView extends LitElement {
   @query("#register")
-  formElement?: HTMLFormElement | null;
+  formElement!: HTMLFormElement | null;
 
-  @property({ type: String })
-  email = "";
+  @property()
+  email!: string;
 
-  @property({ type: String })
-  password = "";
+  @property()
+  password!: string;
 
-  private async _userRegistryHandle(e: Event) {
+  private async userRegistryHandle(e: Event) {
     e.preventDefault();
 
     await checkIn(this.email, this.password);
@@ -25,15 +25,15 @@ export default class RegiserView extends LitElement {
     this.email = "";
     this.password = "";
 
-    redirect("/dasboard");
+    redirect("/dashboard");
   }
 
-  private _handleEmailChange(e: Event) {
+  private handleEmailChange(e: Event) {
     const inputElement = e.target as HTMLInputElement;
 
     this.email = inputElement.value;
   }
-  private _handlePasswordChange(e: Event) {
+  private handlePasswordChange(e: Event) {
     const inputElement = e.target as HTMLInputElement;
 
     this.password = inputElement.value;
@@ -42,7 +42,7 @@ export default class RegiserView extends LitElement {
     return html`
       <section class="section-view-shared">
         <article class="view-form">
-          <form @submit=${this._userRegistryHandle} id="register">
+          <form @submit=${this.userRegistryHandle} id="register">
             <figure>
               <img src=${womenRegister} alt="Inicia Sesision" width="150" />
             </figure>
@@ -52,7 +52,7 @@ export default class RegiserView extends LitElement {
               class="cap-shared"
               name="useremail"
               value=${this.email}
-              @change=${this._handleEmailChange}
+              @change=${this.handleEmailChange}
               required
             />
             <input
@@ -61,7 +61,7 @@ export default class RegiserView extends LitElement {
               class="cap-shared"
               name="password"
               value=${this.password}
-              @change=${this._handlePasswordChange}
+              @change=${this.handlePasswordChange}
               required
             />
             <input type="submit" value="Registrarse" class="submit-form" />

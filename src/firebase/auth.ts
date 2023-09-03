@@ -1,20 +1,37 @@
 import { auth } from "./firebase-app";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { errorMessage } from "../utils/error";
 
 const checkIn = async (email: string, password: string) => {
   try {
-    const userCredentials = await createUserWithEmailAndPassword(
+    const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
-    console.log(userCredentials);
-    console.log('Register Successfuly ✔');
+    console.log(userCredential);
+    console.log("Register Successfuly ✔");
   } catch (error) {
-  
-    errorMessage(error, "Obtuviste este error");
+    errorMessage(error, "Obtuviste este error de registro");
   }
 };
 
-export { checkIn };
+const logIn = async (email: string, password: string) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    console.log(userCredential.user);
+    console.log("Login Sucessfuly ✔");
+  } catch (error) {
+    console.log({ error });
+    errorMessage(error, "Obtuviste un error de inicio de sesion");
+  }
+};
+export { checkIn, logIn };
