@@ -8,5 +8,5 @@ export const views: Route[] = [
   { path: "/", component: "home-view" },
   { path: "/login", component: "login-view" },
   { path: "/register", component: "register-view" },
-  { path: "/dasboard", component: "dasboard-view" },
+  { path: "/dashboard", component: "dasboard-view" },
 ];
