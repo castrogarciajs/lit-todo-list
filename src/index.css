@@ -1,26 +1,5 @@
 @import "./assets/base.css";
 
-.lit-container-header {
-  background-color: var(--lit-background-white);
-  padding: 0.5rem var(--lit-size-padding);
-  border-bottom: 1px solid var(--lit-c-line);
-  box-shadow: 0px 2px 4px -1px var(--lit-c-shadow);
-}
-
-.lit-container-navbar,
-.lit-container-logo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.lit-container-navbar .lit-container-logo {
-  gap: 1rem;
-}
-.lit-container-navbar .lit-container-logo a {
-  font-weight: bold;
-  font-weight: 600;
-}
 .footer-todo-lit {
   background-color: var(--lit-c-line);
   padding: 0.7rem var(--lit-size-padding);

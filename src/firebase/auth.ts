@@ -2,6 +2,9 @@ import { auth } from "./firebase-app";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  User,
 } from "firebase/auth";
 import { errorMessage } from "../utils/error";
 
@@ -34,4 +37,20 @@ const logIn = async (email: string, password: string) => {
     errorMessage(error, "Obtuviste un error de inicio de sesion");
   }
 };
-export { checkIn, logIn };
+
+const onUserAccessSecurity = (): Promise<User | null> => {
+  return new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        resolve(user);
+      } else {
+        reject(null);
+      }
+    });
+  });
+};
+
+const logOut = async () => {
+  await signOut(auth);
+};
+export { checkIn, logIn, onUserAccessSecurity, logOut };
