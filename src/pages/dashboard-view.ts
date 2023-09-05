@@ -1,5 +1,5 @@
 import { LitElement, css, html } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { onUserAccessSecurity } from "../firebase/auth";
 import { redirect } from "../utils/functions";
 import "@vaadin/icons";
@@ -7,6 +7,20 @@ import "@vaadin/icon/theme/material/vaadin-icon";
 
 @customElement("dashboard-view")
 export default class DasboardView extends LitElement {
+  @property({ type: Array })
+  dashboardListMenu = [
+    { title: "Tasks", icon: "tasks", redirect: "/tasks" },
+    { title: "Favorite", icon: "bookmark", redirect: "/favorite" },
+    { title: "Finished", icon: "check", redirect: "#" },
+    { title: "Earrings", icon: "fire", redirect: "/earrings" },
+    { title: "Email", icon: "at", redirect: "mailto:johancs.mm@gmail.com" },
+    {
+      title: "Github",
+      icon: "flask",
+      redirect: "https://github.com/sebastian009w",
+    },
+    { title: "Add Task", icon: "hash", redirect: "/add-task" },
+  ];
   protected async firstUpdated() {
     console.log("Mounted DOM");
 
@@ -27,39 +41,17 @@ export default class DasboardView extends LitElement {
       <section class="section-dashboard">
         <nav class="navbar-dashboard">
           <ul>
-            <li>
-              <vaadin-icon icon="vaadin:user"></vaadin-icon>
-              <a href="/dashboard"> Home </a>
-            </li>
-            <li>
-              <vaadin-icon icon="vaadin:tasks"></vaadin-icon>
-              <a href="/tasks"> Tasks </a>
-            </li>
-            <li>
-              <vaadin-icon icon="vaadin:bookmark"></vaadin-icon>
-              <a href="#">Favorite</a>
-            </li>
-            <li>
-              <vaadin-icon icon="vaadin:check"></vaadin-icon>
-              <a href="#">Finished</a>
-            </li>
-            <li>
-              <vaadin-icon icon="vaadin:fire"></vaadin-icon>
-              <a href="#">Pending</a>
-            </li>
-            <li>
-              <vaadin-icon icon="vaadin:at"></vaadin-icon>
-              <a href="mailto:johancs.mm@gmail.com">Email</a>
-            </li>
-            <li>
-              <vaadin-icon icon="vaadin:flask"></vaadin-icon>
-              <a href="https://github.com/sebastian009w" target="_blank"
-                >Github</a
-              >
-            </li>
+            ${this.dashboardListMenu.map(
+              (elementMenu) => html`
+                <li>
+                  <vaadin-icon icon="vaadin:${elementMenu.icon}"></vaadin-icon>
+                  <a href=${elementMenu.redirect}> ${elementMenu.title} </a>
+                </li>
+              `
+            )}
           </ul>
         </nav>
-        <article>
+        <article class="dashboard-view">
           <slot></slot>
         </article>
         <aside></aside>
@@ -100,9 +92,12 @@ export default class DasboardView extends LitElement {
       text-decoration: underline;
       cursor: pointer;
     }
-    .section-dashboard article {
+    .section-dashboard .dashboard-view {
       background-color: var(--lit-c-white);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 1px 4px 1rem 0 rgba(0, 0, 0, 0.2);
+    }
+    .section-dashboard .dashboard-view {
+      padding: 1rem;
     }
     @media screen and (max-width: 763px) {
       .section-dashboard {
